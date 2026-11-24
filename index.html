@@ -316,12 +316,17 @@
             <p class="shape-note">Beginne üblicherweise mit <code>01</code>. Auch <code>100</code> und höhere Nummern sind möglich.</p>
           </div>
         </div>
+        <section class="guide-panel rules-panel" id="leerflotten" aria-labelledby="leerflotten-heading">
+          <h3 id="leerflotten-heading">Wofür sind Leerflotten bei einem Angriff da?</h3>
+          <p>Eine Leerflotte ist eine Flotte ohne Schiffe. Im Namensschema gehört sie zur Kategorie <code>0</code> (Nullerflotten) und bekommt den Schiffscode <code>00</code>. Ein passender Name ist <code>0-00|01-Nick Leerflotte</code>.</p>
+          <p class="shape-note">Angenommen, fünf Allianzmitglieder geben je eine eigene Leerflotte für die Allianz frei. Wird ein Planet von Spieler 1 angegriffen, stellt er die vier Leerflotten der anderen auf genau diesen Planeten. Alle vier Flotten erscheinen im Kampfbericht. <strong>Ihre Besitzer sehen den Bericht zeitgleich mit Spieler 1.</strong> So können alle fünf direkt besprechen, wie sie reagieren.</p>
+        </section>
         <section class="guide-panel rules-panel" aria-labelledby="rules-heading">
           <h3 id="rules-heading">Spielerkürzel, gemischte Flotten und weitere Regeln</h3>
           <dl class="rules">
             <div><dt>Spielerkürzel</dt><dd>Leite dein Kürzel aus deinem Nickname ab. Die Länge kannst du selbst wählen. Verwende es innerhalb der Allianz möglichst einheitlich. In allen Beispielen steht dafür „Nick“.</dd></div>
             <div><dt>Gemischte Flotten</dt><dd>Sobald mehrere Schiffstypen im Verband sind, wählst du <code>00</code>. Das gilt auch, wenn ein Typ überwiegt. Die Bezeichnung kann die gemeinsame Aufgabe nennen.</dd></div>
-            <div><dt>Flottenkontrollzentrum (FKZ)</dt><dd>Pro FKZ-Stufe steht ein Flottenplatz zur Verfügung. Auch ein organisatorischer Eintrag der Kategorie <code>0</code> belegt einen Platz, sofern er sich anlegen lässt.</dd></div>
+            <div><dt>Flottenkontrollzentrum (FKZ)</dt><dd>Pro FKZ-Stufe steht ein Flottenplatz zur Verfügung. Auch eine Leerflotte der Kategorie <code>0</code> belegt einen Platz.</dd></div>
             <div><dt>40 Zeichen und optionale Zusätze</dt><dd>Leerzeichen und Trennzeichen zählen mit. Einige Sonderzeichen belegen im Zähler zwei Stellen. Für feste Versorgungs- oder Verteidigungsflotten können Ziel, Koordinaten oder Referenzgeschwindigkeit sinnvoll sein. Halte solche Angaben bei beweglichen Flotten aktuell.</dd></div>
             <div><dt>Einstieg in der Allianz</dt><dd>Bei wenigen Flotten reicht ein kurzes, konsequent verwendetes Schema. Stimmt Kategorien und Spielerkürzel gemeinsam ab. Mit wachsender FKZ-Stufe hilft die laufende Nummer, gleichartige Verbände zu unterscheiden.</dd></div>
             <div><dt>Kategorien und Schiffscodes</dt><dd>Die Kategorie beschreibt die Aufgabe. Der Code eines Schiffstyps bleibt in jeder Kategorie gleich. Weitere Typen können ab <code>21</code> ergänzt werden.</dd></div>
@@ -340,7 +345,7 @@
             <table class="ref-table" aria-label="Alle zehn Flottenkategorien"><thead><tr><th scope="col">Ziffer</th><th scope="col">Kategorie</th><th scope="col">Einsatz</th></tr></thead><tbody id="category-rows"></tbody></table>
           </div>
           <div role="tabpanel" id="ships-panel" aria-labelledby="ships-tab" tabindex="0" hidden>
-            <p class="intro-ref">Die 20 Schiffstypen haben feste Kennziffern. Für gemischte Verbände und organisatorische Einträge ist <code>00</code> reserviert.</p>
+            <p class="intro-ref">Die 20 Schiffstypen haben feste Kennziffern. Für gemischte Verbände, Leerflotten und organisatorische Einträge ist <code>00</code> reserviert.</p>
             <table class="ref-table" aria-label="Schiffscodes einschließlich Sondercode"><thead><tr><th scope="col">Code</th><th scope="col">Schiffstyp oder Verband</th><th scope="col">Einordnung</th></tr></thead><tbody id="ship-rows"></tbody></table>
           </div>
         </div>
@@ -372,7 +377,7 @@
     {
       "code": "0",
       "name": "Informationen / Leerflotten",
-      "use": "Optional für organisatorische Einträge, Referenzen und Notizen, sofern dies mit der Flottenverwaltung sinnvoll möglich ist."
+      "use": "Für Leerflotten und organisatorische Hinweise wie Heimatkoordinaten. Steht eine freigegebene Leerflotte auf dem angegriffenen Planeten, erscheint sie im Kampfbericht. Ihr Besitzer sieht den Bericht zeitgleich mit dem angegriffenen Spieler."
     },
     {
       "code": "1",
@@ -553,8 +558,8 @@
       "category": "0",
       "ship": "00",
       "serial": "01",
-      "label": "Heimat",
-      "use": "Organisatorischer Eintrag, nur falls solche Flotten sinnvoll angelegt werden können."
+      "label": "Leerflotte",
+      "use": "Eine für die Allianz freigegebene Leerflotte. Stellt ein Mitspieler sie auf seinen angegriffenen Planeten, siehst du als Besitzer den Kampfbericht zeitgleich mit ihm."
     },
     {
       "category": "1",
@@ -696,17 +701,17 @@
   }
 
   const categoryNotes = {
-    '0': 'Optionaler Eintrag, sofern anlegbar. Er beansprucht einen FKZ-Platz.',
+    '0': 'Stell freigegebene Leerflotten auf deinen angegriffenen Planeten. Ihre Besitzer sehen den Kampfbericht zeitgleich mit dir.',
     '5': 'Die möglichen Einsätze hängen von Fraktion und Spielregeln ab.'
   };
   const shipNotes = {
-    '00': 'Für mehrere Schiffstypen oder einen organisatorischen Eintrag.',
+    '00': 'Für gemischte Verbände, Leerflotten und organisatorische Einträge.',
     '18': 'Einsatz laut Schiffsübersicht über die Galaxieansicht. Code 18 dient als Typkennung. Ob du dafür eine eigene Flotte benennen kannst, hängt von der Flottenverwaltung ab.'
   };
 
   catalog.categories.forEach((item) => {
     addOption(category, item);
-    const categoryExtra = item.code === '0' ? 'Auch ein organisatorischer Flotteneintrag benötigt einen FKZ-Platz.' : '';
+    const categoryExtra = item.code === '0' ? 'Auch eine Leerflotte benötigt einen FKZ-Platz.' : '';
     addRow(byId('category-rows'), item, item.use, categoryExtra);
   });
   const groups = new Map();
