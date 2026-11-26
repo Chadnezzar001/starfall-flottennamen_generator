@@ -2,12 +2,12 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://madman-starfall.goatcounter.com/count; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://madman-starfall.goatcounter.com/counter/%2Fstarfall-flottennamen_generator.json; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: https://madman-starfall.goatcounter.com/count; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://madman-starfall.goatcounter.com/counter/%2Fstarfall-flottennamen_generator.json; base-uri 'none'; form-action 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a121d">
   <meta name="description" content="Flottennamen für Starfall: New Horizons erstellen, prüfen und kopieren. Mit Allianzleitfaden, Schiffscodes und Beispielen.">
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="icon" href="data:,">
   <title>Flottenbenennung · Fan-Projekt für Starfall: New Horizons</title>
   <style>
     :root {
@@ -223,6 +223,24 @@
       nav { grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 10px; }
       nav a { min-height: 38px; justify-content: center; }
     }
+    .nav-actions { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .language-switch { display:inline-flex; border:1px solid #344b58; border-radius:5px; overflow:hidden; flex-shrink:0; }
+    .language-switch button { background:transparent; color:var(--ice); border:0; padding:6px 9px; font-size:.84rem; font-weight:600; }
+    .language-switch button[aria-pressed="true"] { background:#294352; color:var(--text); }
+    .language-switch button:hover { background:#344b58; }
+    .language-switch button:focus-visible { outline-offset:-3px; }
+    @media (max-width: 860px) {
+      .nav-inner { display:grid; grid-template-columns:1fr auto; gap:0 8px; }
+      .wordmark { justify-self:start; margin-block:12px 7px; }
+      .nav-actions { grid-column:2; grid-row:1; justify-self:end; }
+      nav { grid-row:2; grid-column:1 / -1; display:flex; justify-content:space-between; gap:0 8px; flex-wrap:wrap; }
+      nav a { min-height:41px; }
+    }
+    @media (max-width: 359px) {
+      .nav-actions { gap:4px; }
+      .language-switch button { padding:6px; }
+      nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
   </style>
 </head>
 <body id="anfang">
@@ -235,7 +253,13 @@
       <nav aria-label="Seitennavigation">
         <a href="#generator" aria-current="location">Generator</a><a href="#anleitung">Anleitung</a><a href="#nachschlagewerk">Nachschlagewerk</a><a href="#beispiele">Beispiele</a>
       </nav>
+      <div class="nav-actions">
       <a class="play-link" href="https://starfallnewhorizons.com/" target="_blank" rel="noopener noreferrer">Zum Spiel</a>
+        <div class="language-switch" role="group" aria-label="Sprache" id="language-switch" hidden>
+          <button type="button" lang="de" aria-label="Deutsch" aria-pressed="true" data-language="de">DE</button>
+          <button type="button" lang="en" aria-label="English" aria-pressed="false" data-language="en">EN</button>
+        </div>
+      </div>
     </div>
   </header>
   <main>
@@ -366,37 +390,12 @@
       <span class="visit-counter" role="status" aria-atomic="true"><span>Besuche insgesamt</span> <strong id="visit-total">Nur online verfügbar</strong></span>
       <a href="#anfang">Zum Seitenanfang</a>
     </div>
-   <div style="margin:20px 0; padding:22px;
-            text-align:center;
-            background:var(--panel);
-            border:1px solid var(--line);
-            border-radius:9px;">
-
-  <h3>Unterstütze das Fanprojekt</h3>
-
-  <p style="margin:10px 0 16px;
-            color:var(--muted);">
-    Dir gefällt der Flottennamen-Generator?
-    Unterstütze meine Arbeit und die Entwicklung
-    weiterer kostenloser Starfall-Tools.
-  </p>
-
-  <a href="https://ko-fi.com/mad_man15696"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="play-link"
-     style="display:inline-block;
-            padding:10px 20px;">
-    MAD_MAN auf Ko-fi unterstützen
-  </a>
-
-  <p style="margin-top:12px;
-            font-size:.75rem;
-            color:var(--dim);">
-    Freiwillig · Kostenloses Fanprojekt · Werbefrei
-  </p>
-
-</div>
+    <div style="margin:20px 0; padding:22px; text-align:center; background:var(--panel); border:1px solid var(--line); border-radius:9px;">
+      <h3>Unterstütze das Fanprojekt</h3>
+      <p style="margin:10px 0 16px; color:var(--muted);">Dir gefällt der Flottennamen-Generator? Unterstütze meine Arbeit und die Entwicklung weiterer kostenloser Starfall-Tools.</p>
+      <a href="https://ko-fi.com/mad_man15696" target="_blank" rel="noopener noreferrer" class="play-link" style="display:inline-block; padding:10px 20px;">MAD_MAN auf Ko-fi unterstützen</a>
+      <p style="margin-top:12px; font-size:.75rem; color:var(--dim);">Freiwillig · Kostenloses Fanprojekt · Werbefrei</p>
+    </div>
     <details class="sources">
       <summary>Herkunft des Konzepts</summary>
       <p>Die gemeinsame Benennung ist ein Vorschlag für Spieler und Allianzen. Als Vorbild diente die Flottenbenennung der EarthLost-Allianz „Nobodys“. Die Schiffstypen stammen aus der Schiffsliste von Starfall: New Horizons. Die Codes sind interne Kennziffern dieses Vorschlags.</p>
@@ -708,6 +707,235 @@
   const message = byId('message');
   const limit = 40;
 
+  // Local bilingual interface: no external translation service or requests.
+  const translations = {
+  "Zum Generator springen": "Skip to generator",
+  "Fan-Projekt für": "Fan project for",
+  "Anleitung": "Guide",
+  "Nachschlagewerk": "Reference",
+  "Beispiele": "Examples",
+  "Zum Spiel": "Play game",
+  "Allianzleitfaden": "Alliance guide",
+  "Flottenbenennung": "Fleet naming",
+  "Erkenne Aufgabe, Schiffstyp und Spieler am Flottennamen. Erstelle eine einheitliche Kennung für deine Flotte und kopiere sie ins Spiel.": "Identify a fleet’s role, ship type and player from its name. Create a consistent identifier for your fleet and copy it into the game.",
+  "Beispiel": "Example",
+  "Aktiviere JavaScript im Browser, um den Generator und das Nachschlagewerk zu verwenden.": "Enable JavaScript in your browser to use the generator and reference guide.",
+  "Flottennamen-Generator": "Fleet name generator",
+  "Benennungsschema ansehen": "View naming scheme",
+  "Flottenkategorie": "Fleet category",
+  "Schiffstyp": "Ship type",
+  "Flottennummer": "Fleet number",
+  "Fortlaufend je Kategorie und Schiffstyp.": "Sequential within each category and ship type.",
+  "Spielerkürzel": "Player tag",
+  "Ein kurzes Kürzel aus deinem Spielernamen.": "A short tag based on your player name.",
+  "Flottenbezeichnung": "Fleet designation",
+  "Dein Flottenname": "Your fleet name",
+  "Entwurf": "Draft",
+  "Verwendete Zeichen": "Characters used",
+  "Namen kopieren": "Copy name",
+  "So liest du einen Flottennamen": "How to read a fleet name",
+  "Die fünf Bestandteile": "The five components",
+  "Die Reihenfolge bleibt für jede Flotte gleich.": "The order is the same for every fleet.",
+  "Kategorie": "Category",
+  "Schiffscode": "Ship code",
+  "Bezeichnung": "Designation",
+  "Vor der optionalen Bezeichnung steht ein Leerzeichen. Lässt du sie frei, endet der Name mit deinem Kürzel.": "A space precedes the optional designation. If you leave it blank, the name ends with your player tag.",
+  "So vergibst du die Nummer": "How to assign fleet numbers",
+  "Erste Monarch-Kampfflotte": "First Monarch combat fleet",
+  "Zweite Monarch-Kampfflotte": "Second Monarch combat fleet",
+  "Erste Leviathan-Kampfflotte": "First Leviathan combat fleet",
+  "Beginne üblicherweise mit": "Usually start with",
+  ". Auch": ". Numbers such as",
+  "und höhere Nummern sind möglich.": "and above are also possible.",
+  "Wofür sind Leerflotten bei einem Angriff da?": "What are empty fleets used for during an attack?",
+  "Eine Leerflotte ist eine Flotte ohne Schiffe. Im Namensschema gehört sie zur Kategorie": "An empty fleet is a fleet without ships. In this naming scheme it belongs to category",
+  "(Nullerflotten) und bekommt den Schiffscode": "(zero-code fleets) and uses ship code",
+  ". Ein passender Name ist": ". An example name is",
+  "0-00|01-Nick Leerflotte": "0-00|01-Nick EmptyFleet",
+  "Angenommen, fünf Allianzmitglieder geben je eine eigene Leerflotte für die Allianz frei. Wird ein Planet von Spieler 1 angegriffen, stellt er die vier Leerflotten der anderen auf genau diesen Planeten. Alle vier Flotten erscheinen im Kampfbericht.": "Suppose five alliance members each share an empty fleet with the alliance. If a planet belonging to Player 1 is attacked, Player 1 places the other four players’ empty fleets on that planet. All four fleets appear in the battle report.",
+  "Ihre Besitzer sehen den Bericht zeitgleich mit Spieler 1.": "Their owners see the report at the same time as Player 1.",
+  "So können alle fünf direkt besprechen, wie sie reagieren.": "All five can then immediately coordinate their response.",
+  "Spielerkürzel, gemischte Flotten und weitere Regeln": "Player tags, mixed fleets and other rules",
+  "Leite dein Kürzel aus deinem Nickname ab. Die Länge kannst du selbst wählen. Verwende es innerhalb der Allianz möglichst einheitlich. In allen Beispielen steht dafür „Nick“.": "Create a tag from your nickname. You can choose its length. Use it consistently within your alliance. All examples use “Nick” as a placeholder.",
+  "Gemischte Flotten": "Mixed fleets",
+  "Sobald mehrere Schiffstypen im Verband sind, wählst du": "If the fleet contains multiple ship types, select",
+  ". Das gilt auch, wenn ein Typ überwiegt. Die Bezeichnung kann die gemeinsame Aufgabe nennen.": ". This also applies if one type dominates. The designation can describe the fleet’s shared role.",
+  "Flottenkontrollzentrum (FKZ)": "Fleet Control Center (FKZ in German)",
+  "Pro FKZ-Stufe steht ein Flottenplatz zur Verfügung. Auch eine Leerflotte der Kategorie": "Each Fleet Control Center level provides one fleet slot. An empty fleet in category",
+  "belegt einen Platz.": "also occupies a slot.",
+  "40 Zeichen und optionale Zusätze": "40 characters and optional additions",
+  "Leerzeichen und Trennzeichen zählen mit. Einige Sonderzeichen belegen im Zähler zwei Stellen. Für feste Versorgungs- oder Verteidigungsflotten können Ziel, Koordinaten oder Referenzgeschwindigkeit sinnvoll sein. Halte solche Angaben bei beweglichen Flotten aktuell.": "Spaces and separators count towards the limit. Some special characters occupy two positions in the counter. For fixed supply or defense fleets, a destination, coordinates or reference speed may be useful. Keep these details up to date for mobile fleets.",
+  "Einstieg in der Allianz": "Getting started in your alliance",
+  "Bei wenigen Flotten reicht ein kurzes, konsequent verwendetes Schema. Stimmt Kategorien und Spielerkürzel gemeinsam ab. Mit wachsender FKZ-Stufe hilft die laufende Nummer, gleichartige Verbände zu unterscheiden.": "For a small number of fleets, a short, consistent naming scheme is sufficient. Agree on categories and player tags together. As your Fleet Control Center level increases, sequential numbering helps distinguish similar fleets.",
+  "Kategorien und Schiffscodes": "Categories and ship codes",
+  "Die Kategorie beschreibt die Aufgabe. Der Code eines Schiffstyps bleibt in jeder Kategorie gleich. Weitere Typen können ab": "The category describes the role. A ship type’s code remains the same in every category. Additional types can be added starting at",
+  "ergänzt werden.": ".",
+  "Flottenkategorien": "Fleet categories",
+  "Schiffscodes": "Ship codes",
+  "Die erste Ziffer zeigt die Aufgabe deiner Flotte.": "The first digit indicates your fleet’s role.",
+  "Ziffer": "Digit",
+  "Einsatz": "Role",
+  "Die 20 Schiffstypen haben feste Kennziffern. Für gemischte Verbände, Leerflotten und organisatorische Einträge ist": "The 20 ship types have fixed codes. For mixed fleets, empty fleets and organizational entries,",
+  "reserviert.": "is reserved.",
+  "Schiffstyp oder Verband": "Ship type or fleet",
+  "Einordnung": "Classification",
+  "Praxisbeispiele": "Practical examples",
+  "Alle 15 Beispiele anzeigen": "Show all 15 examples",
+  "Weniger Beispiele anzeigen": "Show fewer examples",
+  "Allianzkonzept, Version 1.0 · Erstellt von": "Alliance concept, version 1.0 · Created by",
+  "im November 2026": "in November 2026",
+  "Besuche insgesamt": "Total visits",
+  "Nur online verfügbar": "Available online only",
+  "Zum Seitenanfang": "Back to top",
+  "Unterstütze das Fanprojekt": "Support the fan project",
+  "Dir gefällt der Flottennamen-Generator? Unterstütze meine Arbeit und die Entwicklung weiterer kostenloser Starfall-Tools.": "Enjoy the fleet name generator? Support my work and the development of more free Starfall tools.",
+  "MAD_MAN auf Ko-fi unterstützen": "Support MAD_MAN on Ko-fi",
+  "Freiwillig · Kostenloses Fanprojekt · Werbefrei": "Voluntary support · Free fan project · Ad-free",
+  "Herkunft des Konzepts": "Origins of the concept",
+  "Die gemeinsame Benennung ist ein Vorschlag für Spieler und Allianzen. Als Vorbild diente die Flottenbenennung der EarthLost-Allianz „Nobodys“. Die Schiffstypen stammen aus der Schiffsliste von Starfall: New Horizons. Die Codes sind interne Kennziffern dieses Vorschlags.": "This shared naming convention is a proposal for players and alliances. It was inspired by the fleet naming system of the EarthLost alliance “Nobodys”. The ship types come from the Starfall: New Horizons ship list. The codes are internal identifiers for this proposed system.",
+  "Historisches Benennungssystem der Nobodys": "Historical Nobodys naming system",
+  "Fan-Projekt für Starfall: New Horizons, zum Seitenanfang": "Fan project for Starfall: New Horizons, back to top",
+  "Seitennavigation": "Site navigation",
+  "z. B. Monarch": "e.g. Monarch",
+  "Vorschau des Flottennamens": "Fleet name preview",
+  "Beispiel für die fünf Bestandteile": "Example of the five components",
+  "Alle zehn Flottenkategorien": "All ten fleet categories",
+  "Schiffscodes einschließlich Sondercode": "Ship codes including special code",
+  "Sprache": "Language",
+  "Flottenbenennung · Fan-Projekt für Starfall: New Horizons": "Fleet naming · Fan project for Starfall: New Horizons",
+  "Flottennamen für Starfall: New Horizons erstellen, prüfen und kopieren. Mit Allianzleitfaden, Schiffscodes und Beispielen.": "Create, check and copy fleet names for Starfall: New Horizons. Includes an alliance guide, ship codes and examples.",
+  "Zu lang": "Too long",
+  "Nummer prüfen": "Check number",
+  "Kopierbereit": "Ready to copy",
+  "Verwende für die Flottennummer nur die Ziffern 0 bis 9.": "Use only digits 0 to 9 for the fleet number.",
+  "Trage eine Flottennummer ein.": "Enter a fleet number.",
+  "Trage dein Spielerkürzel ein, um den Namen zu kopieren.": "Enter your player tag to copy the name.",
+  "Der Name nutzt alle 40 Zeichen.": "The name uses all 40 characters.",
+  "Kopiert": "Copied",
+  "Der Flottenname ist in der Zwischenablage.": "The fleet name is on your clipboard.",
+  "Kopierbefehl ausgeführt. Der Name bleibt zum manuellen Kopieren markiert.": "Copy command executed. The name remains selected for manual copying.",
+  "Der Name ist markiert. Wähle im Browser „Kopieren“ oder nutze Strg+C bzw. ⌘C.": "The name is selected. Choose “Copy” in your browser or press Ctrl+C or ⌘C.",
+  "Markiere den Namen in der Vorschau und wähle „Kopieren“.": "Select the name in the preview and choose “Copy”.",
+  "Stell freigegebene Leerflotten auf deinen angegriffenen Planeten. Ihre Besitzer sehen den Kampfbericht zeitgleich mit dir.": "Place shared empty fleets on your attacked planet. Their owners see the battle report at the same time as you.",
+  "Die möglichen Einsätze hängen von Fraktion und Spielregeln ab.": "Possible uses depend on your faction and the game rules.",
+  "Für gemischte Verbände, Leerflotten und organisatorische Einträge.": "For mixed fleets, empty fleets and organizational entries.",
+  "Einsatz laut Schiffsübersicht über die Galaxieansicht. Code 18 dient als Typkennung. Ob du dafür eine eigene Flotte benennen kannst, hängt von der Flottenverwaltung ab.": "According to the ship overview, deployment is via the galaxy view. Code 18 identifies the ship type. Whether you can name a separate fleet for it depends on fleet management.",
+  "Auch eine Leerflotte benötigt einen FKZ-Platz.": "An empty fleet also requires a Fleet Control Center slot.",
+  "Monarch-Kampfflotte": "Monarch combat fleet",
+  "Handelsflotte": "Trade fleet",
+  "Gemischter Kampfverband": "Mixed combat fleet",
+  "Im Generator öffnen": "Open in generator",
+  "Wird geladen …": "Loading …",
+  "Derzeit nicht verfügbar": "Currently unavailable",
+  "Informationen / Leerflotten": "Information / empty fleets",
+  "Für Leerflotten und organisatorische Hinweise wie Heimatkoordinaten. Steht eine freigegebene Leerflotte auf dem angegriffenen Planeten, erscheint sie im Kampfbericht. Ihr Besitzer sieht den Bericht zeitgleich mit dem angegriffenen Spieler.": "For empty fleets and organizational information such as home coordinates. If a shared empty fleet is placed on an attacked planet, it appears in the battle report. Its owner sees the report at the same time as the attacked player.",
+  "Verstärkung / Reserve": "Reinforcements / reserve",
+  "Nachproduzierte Schiffe, Reserven und Einheiten, die noch anderen Verbänden zugeteilt werden sollen.": "Newly produced ships, reserves and units yet to be assigned to other fleets.",
+  "Kampfflotten": "Combat fleets",
+  "Reguläre militärische Hauptverbände.": "Regular main military fleets.",
+  "Raidflotten": "Raid fleets",
+  "Kleinere Angriffs- oder Plünderungsverbände.": "Smaller attack or raiding fleets.",
+  "Kampfunterstützung": "Combat support",
+  "Schwere Bomber sowie Bergungs- und Rettungsschiffe im Umfeld militärischer Aktionen.": "Heavy bombers, salvage and rescue ships supporting military operations.",
+  "Schnellreaktion / Bereitschaft": "Rapid response / standby",
+  "Kurzfristig verfügbare Verbände für schnelle Einsätze. Konkrete Einsatzmöglichkeiten hängen von Fraktion und Spielregeln ab.": "Fleets available at short notice for rapid deployment. Specific uses depend on the faction and game rules.",
+  "Handelsflotten": "Trade fleets",
+  "Größere Handelstransporte, Großfrachterverbände und Allianzlieferungen.": "Large trade shipments, large freighter fleets and alliance deliveries.",
+  "Versorgungsflotten": "Supply fleets",
+  "Kleinere Transporte, Kolonieversorgung und regelmäßiger Nachschub.": "Smaller shipments, colony supplies and regular resupply.",
+  "Spezialoperationen": "Special operations",
+  "Kolonisation, Invasion und Planetenfusion sowie zugehörige Begleitflotten.": "Colonization, invasion and planetary fusion, plus associated escort fleets.",
+  "Verteidigungsflotten": "Defense fleets",
+  "Planetenschutz, stationierte Sicherung und organisierte Allianzverteidigung.": "Planetary protection, stationed security and coordinated alliance defense.",
+  "Gemischter Verband / Organisation": "Mixed fleet / organization",
+  "Sondercode": "Special code",
+  "Jäger": "Fighter",
+  "Fregatte": "Frigate",
+  "Kreuzer": "Cruiser",
+  "Schlachtschiff": "Battleship",
+  "Kriegsschiffe": "Warships",
+  "Kreuzer / Bomber": "Cruiser / bomber",
+  "Zivil- und Spezialschiffe": "Civilian and special-purpose ships",
+  "Schwerer Bomber": "Heavy bomber",
+  "Frachter": "Freighter",
+  "Großfrachter": "Large freighter",
+  "Bergungsschiff": "Salvage ship",
+  "Rettungsschiff": "Rescue ship",
+  "Kolonieschiff": "Colony ship",
+  "Invasionsschiff": "Invasion ship",
+  "Fusionator": "Fusionator",
+  "Leerflotte": "EmptyFleet",
+  "Eine für die Allianz freigegebene Leerflotte. Stellt ein Mitspieler sie auf seinen angegriffenen Planeten, siehst du als Besitzer den Kampfbericht zeitgleich mit ihm.": "An empty fleet shared with the alliance. If another player places it on their attacked planet, you as its owner see the battle report at the same time as they do.",
+  "Reserve": "Reserve",
+  "Gemischte Nachproduktion oder Reserve.": "Mixed newly produced ships or reserve.",
+  "Monarch": "Monarch",
+  "Erste Monarch-Kampfflotte.": "First Monarch combat fleet.",
+  "Leviathan": "Leviathan",
+  "Erste Leviathan-Kampfflotte.": "First Leviathan combat fleet.",
+  "Raid": "Raid",
+  "Erste Raidflotte mit Falke-Jägern.": "First raid fleet with Falke fighters.",
+  "Bomber": "Bomber",
+  "Schwere Bomber für Kampfunterstützung.": "Heavy bombers for combat support.",
+  "Bergung": "Salvage",
+  "Bergungsschiffe für Beute und Trümmer.": "Salvage ships for loot and debris.",
+  "Rettung": "Rescue",
+  "Rettungsschiffe zur Besatzungsrettung.": "Rescue ships for crew recovery.",
+  "Alarm": "Alert",
+  "Bereitschaftsflotte, sofern der Einsatzzweck zur Fraktion passt.": "Standby fleet, provided the intended use suits the faction.",
+  "Handel": "Trade",
+  "Großfrachter für größere Transporte.": "Large freighters for larger shipments.",
+  "Versorgung": "Supply",
+  "Frachter für regelmäßigen Nachschub.": "Freighters for regular resupply.",
+  "Invasion": "Invasion",
+  "Invasionsschiffe.": "Invasion ships.",
+  "Fusion": "Fusion",
+  "Fusionatoren.": "Fusionators.",
+  "Schutz": "Defense",
+  "Bastion-Flotte zur Verteidigung.": "Bastion fleet for defense.",
+  "Verband": "Mixed",
+  "Gemischter Kampfverband.": "Mixed combat fleet."
+};
+  const languageKey = 'starfall-fleet-language';
+  let language = 'de';
+  try { if (localStorage.getItem(languageKey) === 'en') language = 'en'; } catch (error) {}
+  const t = (text) => language === 'en' && Object.prototype.hasOwnProperty.call(translations, text) ? translations[text] : text;
+  const staticText = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const n = walker.currentNode;
+    if (n.parentElement.closest('script, style, #language-switch, #visit-total, #state, #copy')) continue;
+    const key = n.nodeValue.trim().replace(/\s+/g, ' ');
+    if (Object.prototype.hasOwnProperty.call(translations, key)) staticText.push([n, n.nodeValue, key]);
+  }
+  const staticAttributes = [];
+  document.querySelectorAll('[aria-label], [placeholder], meta[name="description"]').forEach((el) => {
+    ['aria-label', 'placeholder', 'content'].forEach((attr) => {
+      const val = el.getAttribute(attr);
+      if (val && Object.prototype.hasOwnProperty.call(translations, val)) staticAttributes.push([el, attr, val]);
+    });
+  });
+  const originalTitle = document.title;
+  function updateStaticLanguage() {
+    document.documentElement.lang = language;
+    document.title = t(originalTitle);
+    staticText.forEach(([n, original, key]) => {
+      n.nodeValue = language === 'de' ? original : original.replace(/\S[\s\S]*\S|\S/, t(key));
+      if (language === 'en' && key === 'ergänzt werden.') n.nodeValue = '.';
+    });
+    staticAttributes.forEach(([el, attr, val]) => el.setAttribute(attr, t(val)));
+    document.querySelectorAll('[data-language]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+  }
+  let visitCounterState = { status: 'Nur online verfügbar', total: null };
+  function renderVisitCounter() {
+    const value = byId('visit-total');
+    value.textContent = visitCounterState.total === null ? t(visitCounterState.status) : visitCounterState.total.toLocaleString(language === 'en' ? 'en-US' : 'de-DE');
+  }
+  function setVisitCounter(status, total = null) {
+    visitCounterState = {status, total};
+    renderVisitCounter();
+  }
+
+
   function node(tag, text, className) {
     const element = document.createElement(tag);
     if (text !== undefined) element.textContent = text;
@@ -716,7 +944,7 @@
   }
 
   function addOption(parent, item) {
-    const option = node('option', item.code + ' · ' + item.name);
+    const option = node('option', item.code + ' · ' + t(item.name));
     option.value = item.code;
     parent.appendChild(option);
   }
@@ -725,9 +953,9 @@
     const row = node('tr');
     const code = node('th', item.code, 'ref-code');
     code.scope = 'row';
-    const description = node('td', note, 'ref-note');
-    if (extra) description.appendChild(node('small', extra));
-    row.append(code, node('td', item.name, 'ref-name'), description);
+    const description = node('td', t(note), 'ref-note');
+    if (extra) description.appendChild(node('small', t(extra)));
+    row.append(code, node('td', t(item.name), 'ref-name'), description);
     parent.appendChild(row);
   }
 
@@ -740,6 +968,10 @@
     '18': 'Einsatz laut Schiffsübersicht über die Galaxieansicht. Code 18 dient als Typkennung. Ob du dafür eine eigene Flotte benennen kannst, hängt von der Flottenverwaltung ab.'
   };
 
+  function renderCatalog() {
+    const selectedCategory = category.value || '2';
+    const selectedShip = ship.value || '09';
+    [category, ship, byId('category-rows'), byId('ship-rows')].forEach(el => el.replaceChildren());
   catalog.categories.forEach((item) => {
     addOption(category, item);
     const categoryExtra = item.code === '0' ? 'Auch eine Leerflotte benötigt einen FKZ-Platz.' : '';
@@ -749,15 +981,17 @@
   catalog.ships.forEach((item) => {
     if (!groups.has(item.group)) {
       const group = node('optgroup');
-      group.label = item.group;
+      group.label = t(item.group);
       groups.set(item.group, group);
       ship.appendChild(group);
     }
     addOption(groups.get(item.group), item);
     addRow(byId('ship-rows'), item, item.kind, item.code === '18' ? shipNotes['18'] : '');
   });
-  category.value = '2';
-  ship.value = '09';
+  category.value = selectedCategory;
+  ship.value = selectedShip;
+
+  }
 
   function compose(categoryCode, shipCode, number, player, label) {
     const prefix = categoryCode + '-' + shipCode + '|' + number + '-' + player;
@@ -766,7 +1000,7 @@
 
   function showNote(id, text) {
     const note = byId(id);
-    note.textContent = text || '';
+    note.textContent = text ? t(text) : '';
     note.hidden = !text;
   }
 
@@ -789,13 +1023,13 @@
     byId('meter-fill').style.width = Math.min(length / limit * 100, 100) + '%';
     serial.setAttribute('aria-invalid', String(badNumber));
     copy.disabled = !draft.valid;
-    copy.textContent = 'Namen kopieren';
+    copy.textContent = t('Namen kopieren');
     let hint;
     let state;
     let mode;
     if (excess > 0) {
       state = 'Zu lang'; mode = 'error';
-      hint = 'Kürze den Namen um ' + excess + ' Zeichen.';
+      hint = language === 'en' ? 'Shorten the name by ' + excess + (excess === 1 ? ' character.' : ' characters.') : 'Kürze den Namen um ' + excess + ' Zeichen.';
     } else if (badNumber) {
       state = 'Nummer prüfen'; mode = 'error';
       hint = 'Verwende für die Flottennummer nur die Ziffern 0 bis 9.';
@@ -804,11 +1038,11 @@
       hint = !draft.numeric ? 'Trage eine Flottennummer ein.' : 'Trage dein Spielerkürzel ein, um den Namen zu kopieren.';
     } else {
       state = 'Kopierbereit'; mode = 'ready';
-      hint = excess === 0 ? 'Der Name nutzt alle 40 Zeichen.' : 'Noch ' + (limit - length) + ' Zeichen frei.';
+      hint = excess === 0 ? 'Der Name nutzt alle 40 Zeichen.' : (language === 'en' ? (limit - length) + (limit - length === 1 ? ' character remaining.' : ' characters remaining.') : 'Noch ' + (limit - length) + ' Zeichen frei.');
     }
     preview.dataset.mode = mode;
-    byId('state').textContent = state;
-    if (message.textContent !== hint) message.textContent = hint;
+    byId('state').textContent = t(state);
+    if (message.textContent !== t(hint)) message.textContent = t(hint);
     showNote('category-note', categoryNotes[category.value]);
     showNote('ship-note', shipNotes[ship.value]);
   }
@@ -867,18 +1101,18 @@
     }
     if (readDraft().name !== draft.name) return;
     if (copied) {
-      copy.textContent = 'Kopiert';
-      message.textContent = 'Der Flottenname ist in der Zwischenablage.';
+      copy.textContent = t('Kopiert');
+      message.textContent = t('Der Flottenname ist in der Zwischenablage.');
       return;
     }
     const selected = selectResult();
     if (selected && !hasClipboard && copyMarkedText(draft.name)) {
-      message.textContent = 'Kopierbefehl ausgeführt. Der Name bleibt zum manuellen Kopieren markiert.';
+      message.textContent = t('Kopierbefehl ausgeführt. Der Name bleibt zum manuellen Kopieren markiert.');
       return;
     }
     message.textContent = selected
-      ? 'Der Name ist markiert. Wähle im Browser „Kopieren“ oder nutze Strg+C bzw. ⌘C.'
-      : 'Markiere den Namen in der Vorschau und wähle „Kopieren“.';
+      ? t('Der Name ist markiert. Wähle im Browser „Kopieren“ oder nutze Strg+C bzw. ⌘C.')
+      : t('Markiere den Namen in der Vorschau und wähle „Kopieren“.');
   });
 
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
@@ -906,29 +1140,34 @@
     category.value = example.category;
     ship.value = example.ship;
     serial.value = example.serial;
-    designation.value = example.label;
+    designation.value = t(example.label);
     render();
     byId('generator').scrollIntoView({block: 'start'});
     (nick.value.trim() ? result : nick).focus({preventScroll: true});
   }
   function makeExample(example, title) {
-    const name = compose(example.category, example.ship, example.serial, 'Nick', example.label);
+    const name = compose(example.category, example.ship, example.serial, 'Nick', t(example.label));
     const card = node('article', undefined, title ? 'example-card' : 'more-example');
     const content = title ? card : node('div');
-    if (title) content.appendChild(node('h3', title));
-    content.append(node('code', name), node('p', example.use));
+    if (title) content.appendChild(node('h3', t(title)));
+    content.append(node('code', name), node('p', t(example.use)));
     if (!title) card.appendChild(content);
-    const use = node('button', 'Im Generator öffnen', 'use-example');
+    const use = node('button', t('Im Generator öffnen'), 'use-example');
     use.type = 'button';
-    use.setAttribute('aria-label', name + ' im Generator öffnen');
+    use.setAttribute('aria-label', language === 'en' ? 'Open ' + name + ' in generator' : name + ' im Generator öffnen');
     use.addEventListener('click', () => applyExample(example));
     card.appendChild(use);
     return card;
   }
+  function renderExamples() {
+    byId('featured').replaceChildren();
+    byId('other-examples').replaceChildren();
   catalog.examples.forEach((example) => {
     const title = featuredTitles[example.label];
     byId(title ? 'featured' : 'other-examples').appendChild(makeExample(example, title));
   });
+  }
+
 
   const navLinks = Array.from(document.querySelectorAll('nav a'));
   const navSections = navLinks.map((link) => document.querySelector(link.hash));
@@ -953,7 +1192,19 @@
   window.addEventListener('scroll', scheduleNavigation, {passive: true});
   window.addEventListener('resize', scheduleNavigation);
   window.addEventListener('pageshow', () => { render(); scheduleNavigation(); });
-  render();
+  function setLanguage(next, persist = true) {
+    language = next === 'en' ? 'en' : 'de';
+    if (persist) { try { localStorage.setItem(languageKey, language); } catch (error) {} }
+    updateStaticLanguage();
+    renderCatalog();
+    renderExamples();
+    render();
+    renderVisitCounter();
+    scheduleNavigation();
+  }
+  byId('language-switch').hidden = false;
+  document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
+  setLanguage(language, false);
   updateNavigation();
   </script>
   <script>
@@ -964,7 +1215,7 @@
     if (location.origin !== siteOrigin || !entryPaths.includes(location.pathname)) return;
 
     const value = document.getElementById('visit-total');
-    value.textContent = 'Wird geladen …';
+    setVisitCounter('Wird geladen …');
     const service = 'https://madman-starfall.goatcounter.com';
 
     // Der feste Seitenpfad zählt beide Einstiegsadressen gemeinsam.
@@ -989,9 +1240,9 @@
       if (!/^\d+(?:[.,\s'’]\d{3})*$/.test(raw)) throw new Error('Ungültiger Zählerstand');
       const total = Number(raw.replace(/\D/g, ''));
       if (!Number.isSafeInteger(total)) throw new Error('Ungültiger Zählerstand');
-      value.textContent = total.toLocaleString('de-DE');
+      setVisitCounter('', total);
     } catch {
-      value.textContent = 'Derzeit nicht verfügbar';
+      setVisitCounter('Derzeit nicht verfügbar');
     } finally {
       clearTimeout(timeout);
     }
